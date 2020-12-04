@@ -33,9 +33,10 @@ public class CX {
 		this.imaginary = imaginary1;
 	}
 	
-	//magnitude squared
-	public SX magsq() {
-		return SX.add(SX.multiply(this.real, this.real), SX.multiply(this.imaginary, this.imaginary));
+	//difference magnitude between complex numbers squared
+	public static SX diff(CX a, CX b) {
+		CX diff = CX.subtract(a, b);
+		return SX.add(SX.multiply(diff.real, diff.real), SX.multiply(diff.imaginary, diff.imaginary));
 	}
 	
 	//add

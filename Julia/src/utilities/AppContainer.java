@@ -2,6 +2,7 @@ package utilities;
 
 import objects.CX;
 import objects.SX;
+import services.Iterator;
 
 public class AppContainer {
 
@@ -123,9 +124,18 @@ public class AppContainer {
 			}
 	}
 	
+	//test4
+	public static void test4() {
+		CX z = new CX();
+		CX C = new CX();
+		z.value("0.0", "0.0");
+		C.value("-0.5", "-0.5");
+		System.out.println(Iterator.iterate(z, C, 10000).value());
+	}
+	
 	//main
 	public static void main(String[] args) throws java.io.FileNotFoundException{
-		AppContainer.test3();
+		AppContainer.test4();
 	}
 	
 }
