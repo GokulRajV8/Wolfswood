@@ -4,7 +4,7 @@ import objects.ComplexNumber;
 
 public class Iterator {
 
-	//returns the number of iterations when the result leaves the 2 units radius circle
+	//returns the number of iterations when the result leaves the 2 units radius circle (max iteration 400)
 	public static int iterate(ComplexNumber z, ComplexNumber c) {
 		ComplexNumber result;
 		ComplexNumber zn = z.clone();
