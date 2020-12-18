@@ -1,16 +1,21 @@
 package services;
 
-import objects.CX;
+import objects.ComplexNumber;
 
 public class Iterator {
 
-	public static CX iterate(CX z, CX C, int n) {
-		CX result = new CX();
-		CX zn = z.clone();
-		for (int i = 0; i < n; i++) {
-			result = CX.add(CX.multiply(zn, zn), C);
+	//returns the number of iterations when the result leaves the 2 units radius circle
+	public static int iterate(ComplexNumber z, ComplexNumber c) {
+		ComplexNumber result;
+		ComplexNumber zn = z.clone();
+		int i = 0;
+		for (; i < 400; i++) {
+			result = ComplexNumber.add(ComplexNumber.multiply(zn, zn), c);
+			if((result.real*result.real + result.imag*result.imag) >= 4) {
+				return i;
+			}
 			zn = result;
 		}
-		return result;
+		return i;
 	}
 }

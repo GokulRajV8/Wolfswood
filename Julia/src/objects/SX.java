@@ -51,15 +51,28 @@ public class SX {
 	  }
 	}
 	
-	//compare positive numbers
+	//compare numbers
 	public static int compare(SX a, SX b){
-	  for(int i = 0; i < 32; i++){
-	    if (a.x[i] > b.x[i])
-	      return 1;
-	    else if (a.x[i] < b.x[i])
-	      return -1;
-	  }
-	  return 0;
+		if(a.sign && b.sign) {
+			for(int i = 0; i < 32; i++){
+				if (a.x[i] > b.x[i])
+					return 1;
+				else if (a.x[i] < b.x[i])
+					return -1;
+			}
+			return 0;
+		}
+		else if(!a.sign && b.sign)
+			return -1;
+		else if(a.sign && !b.sign)
+			return 1;
+		else {
+			SX a1 = a.clone();
+			SX b1 = b.clone();
+			a1.sign = true;
+			b1.sign = true;
+			return 0-SX.compare(a1, b1);
+		}
 	}
 	
 	//add
@@ -96,7 +109,7 @@ public class SX {
 	}
 	
 	//subtract
-	public static SX subtract(SX a1, SX b1){
+	public static SX subtract(SX a1, SX b1) {
 	  SX a = a1.clone();
 	  SX b = b1.clone();
 	  if(a.sign && b.sign){
@@ -140,7 +153,7 @@ public class SX {
 	}
 	
 	//multiply
-	public static SX multiply(SX a, SX b){
+	public static SX multiply(SX a, SX b) {
 	  int cursor = 0;
 	  int unitProd = 0;
 	  SX result = new SX();
@@ -172,7 +185,7 @@ public class SX {
 	}
 	
 	//divide
-	public static SX divide(SX a1, SX b1){
+	public static SX divide(SX a1, SX b1) {
 	  SX a = a1.clone();
 	  SX b = b1.clone();
 	  SX result = new SX();
